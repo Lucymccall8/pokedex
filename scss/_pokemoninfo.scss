@@ -1,0 +1,112 @@
+/* ---------------------------- pokemon container --------------------------- */
+
+.pokemon-info-container {
+    background-color: lighten($yellow-color, 50%);
+    padding-top: 5px;
+    text-align: center;
+    overflow: hidden;
+    height: 100%;
+    text-transform: capitalize;
+    min-height: 100vh;
+}
+
+/* ------------------------------ pokemon types ----------------------------- */
+
+.pokemon-types-outer {
+    display: flex;
+    justify-content: center;
+
+    .type-div {
+        width: 100px;
+        padding: 8px;
+        border-radius: 10px;
+        margin: 10px;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+/* ------------------------------ pokemon stats ----------------------------- */
+.stat-list {
+    width: 90%;
+    margin: 30px auto 0;
+    // margin-top: 30px;
+
+    ul {
+        columns: 2;
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        background-color: lighten($yellow-color, 30%);
+        margin-bottom: 8px;
+        height: 40px;
+        padding: 8px 10px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: capitalize;
+    }
+}
+
+/* ------------------------------ pokemon red blue moves ----------------------------- */
+.collapse-moves {
+    outline: none;
+    border: none;
+    width: calc(90% + 1px);
+    color: $offwhite-color;
+    background-color: #353645;
+    padding: 10px 20px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
+    margin-bottom: 10px;
+
+    text {
+        margin: auto 0;
+    }
+
+    &:hover {
+        opacity: 0.95;
+    }
+
+    &::after {
+        content: '+';
+        /* Unicode character for "plus" sign (+) */
+        font-size: 25px;
+        padding: 0;
+        color: white;
+        border: none;
+        float: right;
+        margin-left: 5px;
+    }
+}
+
+.collapse-moves.active {
+    opacity: 0.95;
+
+    &::after {
+        content: "-";
+    }
+}
+
+.move-content {
+    // padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    width: 100%;
+
+    table {
+        @include move-table(white, white);
+        // padding-top: 10px;
+    }
+}

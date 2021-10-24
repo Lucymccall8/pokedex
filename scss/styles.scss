@@ -1,0 +1,215 @@
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+@import "../scss/mixins", "../scss/_pokedex.scss", "../scss/_variables", "../scss/pokemoninfo";
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* --------------------------------- header styles --------------------------------- */
+
+.home-header {
+  @include header(transparent);
+  display: flex;
+  justify-content: right;
+}
+
+/* -------------------- setting the page background image ------------------- */
+.background-container {
+  background-image: linear-gradient(rgba(14, 12, 48, 0.904),
+      rgba(14, 12, 48, 0.575)),
+    url(../assets/pokemon.jpg);
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.title-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 50vh;
+  overflow: hidden;
+
+  @media (min-width: 900px) {
+    height: calc(50vh - 42px);
+  }
+
+  img {
+    position: absolute;
+    width: 80%;
+    max-width: 700px;
+    bottom: 50px;
+  }
+}
+
+/* ------------------------------- Search Bar ------------------------------- */
+
+.home-search-container {
+  position: relative;
+  width: 85%;
+  max-width: 900px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.home-search-bar {
+  width: calc(100% - 6px);
+  height: 40px;
+  border-radius: 8px;
+  font-size: 20px;
+  border: none;
+  padding-left: 5px;
+  background-color: rgb(255, 255, 255);
+  font-weight: 500;
+
+  &:focus {
+    outline: none;
+    background-color: rgb(243, 243, 243);
+  }
+}
+
+/* ----------------------------- no results box ----------------------------- */
+.no-results {
+  text-align: center;
+
+  p {
+    color: white;
+  }
+
+  display: none;
+}
+
+/* ------------------------------ burger button ----------------------------- */
+.hamburger.white {
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: white;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    background-color: white;
+  }
+}
+
+/* ------------------------------- burger menu container ------------------------------ */
+
+.burger-menu {
+  background-color: #333645;
+  width: 75%;
+  height: 100vh;
+  z-index: 101;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: transform 0.2s;
+
+  @media (min-width: 550px) {
+    width: 350px;
+  }
+}
+
+.burger-menu.visible {
+  transform: translateX(0);
+  transition: transform 0.2s;
+}
+
+/* -------------------------- burger menu contents -------------------------- */
+
+.burger-menu-list {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .primary-link {
+    font-size: 20px;
+    font-weight: 5000;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .secondary-link {
+    padding: 20px;
+    background-color: #262934;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.068);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .primary-button-link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    button {
+      background-color: transparent;
+      padding: 12px;
+      font-size: 20px;
+      border: 3px solid white;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+/* ------------------- hide website when burger menu opens ------------------ */
+.website-container {
+  transition: transform 0.2s;
+  transform: translateX(0px);
+  top: 0;
+  width: 100%;
+}
+
+.website-container.pokedex {
+  padding-top: 70px;
+}
+
+.website-container.transitioned {
+  transition: transform 0.2s;
+  transform: translateX(-75%);
+  position: fixed;
+
+  @media (min-width: 550px) {
+    transform: translateX(-350px);
+  }
+}
+
+.website-cover {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #2629346e;
+  z-index: 102;
+  top: 0;
+  display: none;
+  cursor: pointer;
+}

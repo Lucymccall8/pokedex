@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import "../scss/mixins", "../scss/_variables";
+
+body {
+  margin: 0;
+  background-color: #2e2d41;
+  color: #2e2d41;
+}
+
+html {
+  height: 100%;
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ------------------------------- Navigation/Header ------------------------------- */
+
+.header {
+  @include header(#2e2d41);
+  box-shadow: 0 3px 10px -1px rgba(0, 0, 0, 0.2);
+
+  @media (min-width: 400px) {
+    .header-image {
+      padding-left: 15px;
+    }
+
+    .burger-button-container {
+      padding-right: 15px;
+    }
+
+  }
+
+  @media (min-width: 900px) {
+    .header-image {
+      padding-left: 30px;
+    }
+
+    .burger-button-container {
+      padding-right: 30px;
+    }
+  }
+
+  @media (min-width: 1300px) {
+
+    .header-image {
+      padding-left: 80px;
+    }
+
+    .burger-button-container {
+      padding-right: 80px;
+    }
+  }
+
+  // #2e2d41
+}
+
+.header-content {
+  display: flex;
+  margin: auto 0;
+  width: 100%;
+  height: 42.8px;
+  padding: 0 20px;
+}
+
+.header-image {
+  margin: auto 0;
+
+  img {
+    width: 200px;
+  }
+}
+
+.burger-button-container {
+  position: absolute;
+  right: 20px;
+}
+
+/* ------------------------------ Pokemon cards ----------------------------- */
+
+.pokemon-card-container {
+  // padding-top: 68.8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  min-height: 90vh;
+
+
+  @media (min-width: 400px) {
+    padding: 20px 15px;
+  }
+
+  @media (min-width: 900px) {
+    padding: 20px 30px;
+  }
+
+  @media (min-width: 1300px) {
+    padding: 20px 80px;
+  }
+}
+
+.pokemon-card {
+  // border: 2px solid #f1efef;
+  border-radius: 5px;
+  width: calc(80%);
+  position: relative;
+  margin-top: 20px;
+  background-color: #F5F7F8;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (min-width: 550px) {
+    width: calc(50% - 50px);
+  }
+
+  @media (min-width: 950px) {
+    width: calc(33.3% - 50px);
+
+    &:nth-last-of-type(1) {
+      margin-right: 33.3%;
+    }
+  }
+
+  @media (min-width: 1300px) {
+    width: calc(25% - 50px);
+
+    &:nth-last-of-type(1) {
+      margin-right: 0;
+    }
+  }
+
+  @media (min-width: 1700px) {
+    width: calc(20% - 50px);
+  }
+}
+
+.pokemon-card h2 {
+  margin: 0;
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+.pokemon-card p {
+  margin: 0;
+}
+
+.card-image {
+  display: flex;
+  justify-content: center;
+  padding: 0 30px;
+  // margin-left: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-left: 10px;
+}
+
+/* ---------------------------- the pokemon type ---------------------------- */
+.card-type-inner {
+  width: 100%;
+  height: 25px;
+  border-radius: 3px;
+  padding: 3px 10px;
+  display: flex;
+  min-width: 128px;
+
+  p {
+    margin: auto 0px;
+  }
+}
+
+.card-type-outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+//the cards coloured bullet point
+.card-type-color {
+  width: 8px;
+  height: 8px;
+  margin: auto 10px;
+}
+
+/* ---------------------------- The page buttons ---------------------------- */
+
+.page-button-container {
+  @include page-button-container($offwhite-color);
+}
+
+/* ----------------------------- The burger menu ---------------------------- */
+.hamburger.yellow {
+  border: 3px solid #ffcc00;
+  border-radius: 5px;
+  padding: 7px;
+  display: flex;
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: #ffcc00;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    background-color: #ffcc00;
+  }
+}
+
+/* -------------------------- burger menu content -------------------------- */
+.burger-search-form {
+  width: 80%;
+  position: relative;
+}
+
+.burger-search-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: #262934;
+  position: relative;
+
+  input {
+    width: calc(100% - 6px);
+    height: 30px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    padding-left: 5px;
+    outline: none;
+
+    &:focus {
+      border: 2px solid $yellow-color;
+    }
+  }
+
+  i {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
